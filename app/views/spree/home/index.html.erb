@@ -1,6 +1,9 @@
 <% if @homepage %>
     <% @homepage.cms_sections.each do |section| %>
       <%= build_section(section) %>
+              <% if @product.present? %>
+        <%= image_tag @product.images.first.attachment %>
+      <% end %>
     <% end %>
 <% else %>
   <div id="missingHomepage" class="container my-5">
@@ -9,6 +12,7 @@
         <figure class="logo mx-auto missing-homepage-logo-container">
           <%= logo %>
         </figure>
+
       </div>
       <div class="col-12 mb-5 text-center">
         <h1 class="mb-3"><%= Spree.t('we_will_be_back') %></h1>
